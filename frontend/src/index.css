@@ -1,0 +1,432 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ⚔️ METE OU LATE - Tema de Clã de Batalha */
+
+/* Base Styles */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #fef3c7; }
+::-webkit-scrollbar-thumb { background: #b45309; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #92400e; }
+
+/* Card Base */
+.card {
+  @apply bg-gradient-to-br from-white to-amber-50 rounded-2xl shadow-lg p-5 border border-amber-100;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #b45309, #f59e0b, #b45309);
+  border-radius: 2rem 2rem 0 0;
+}
+
+.card:hover {
+  @apply shadow-2xl border-amber-300;
+  transform: translateY(-4px);
+}
+
+/* Glass Morphism Cards */
+.glass-card {
+  @apply backdrop-blur-md bg-white/30 border border-white/20 rounded-2xl p-6;
+  box-shadow: 0 8px 32px 0 rgba(180, 83, 9, 0.1);
+}
+
+/* Gradient Backgrounds */
+.gradient-war {
+  background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+}
+
+.gradient-raid {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+}
+
+.gradient-peace {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+/* Epic Title */
+.epic-title {
+  @apply text-4xl md:text-5xl font-black tracking-tighter;
+  background: linear-gradient(135deg, #92400e 0%, #b45309 50%, #dc2305 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+.btn-epic {
+  @apply px-6 py-3 rounded-xl font-bold transition-all duration-300;
+  background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(180, 83, 9, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-epic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-epic:hover::before {
+  left: 100%;
+}
+
+.btn-epic:hover {
+  @apply shadow-2xl scale-105;
+  background: linear-gradient(135deg, #92400e 0%, #7c2d12 100%);
+}
+
+.btn-epic:active {
+  @apply scale-95;
+}
+
+/* Stat Box */
+.stat-box {
+  @apply relative overflow-hidden rounded-xl p-4 border-l-4;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 100%);
+  transition: all 0.3s ease;
+}
+
+.stat-box::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(20px, 20px); }
+  100% { transform: translate(0, 0); }
+}
+
+.stat-box:hover {
+  @apply shadow-lg scale-105 -translate-y-1;
+}
+
+/* War Status */
+.war-card {
+  @apply relative overflow-hidden rounded-2xl p-8;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(234, 88, 12, 0.1) 100%);
+  border: 2px solid rgba(220, 38, 38, 0.3);
+  box-shadow: inset 0 0 20px rgba(220, 38, 38, 0.1);
+}
+
+.war-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(234, 88, 12, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Raid Ranking */
+.rank-badge {
+  @apply inline-flex items-center justify-center w-10 h-10 rounded-full font-bold text-white;
+  animation: pulse-rank 2s infinite;
+}
+
+.rank-1 { @apply bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-lg shadow-yellow-500/50; }
+.rank-2 { @apply bg-gradient-to-br from-gray-300 to-gray-500 shadow-lg shadow-gray-500/50; }
+.rank-3 { @apply bg-gradient-to-br from-orange-400 to-orange-600 shadow-lg shadow-orange-500/50; }
+
+@keyframes pulse-rank {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Member Grid Animation */
+.member-card-enter {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading Spinner Enhanced */
+.spinner-epic {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(180, 83, 9, 0.2);
+  border-top: 4px solid #b45309;
+  border-radius: 50%;
+  animation: spinEpic 1s linear infinite;
+}
+
+@keyframes spinEpic {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Gradient Text */
+.gradient-text-war {
+  background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-raid {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Progress Bar Animation */
+.progress-epic {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.1), rgba(0,0,0,0.05));
+}
+
+.progress-epic::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: progressShine 2s infinite;
+}
+
+@keyframes progressShine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Header Glow */
+.header-glow {
+  background: linear-gradient(135deg, rgba(180, 83, 9, 0.5) 0%, rgba(245, 158, 11, 0.5) 100%);
+  box-shadow: 0 0 30px rgba(180, 83, 9, 0.3);
+}
+
+/* Badge Styles */
+.badge-epic {
+  @apply inline-block px-4 py-2 rounded-full font-bold text-sm;
+  background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+  color: white;
+  box-shadow: 0 4px 10px rgba(180, 83, 9, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animate {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.glitch-text {
+  animation: glitch 0.2s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .epic-title {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  .btn-epic {
+    @apply px-4 py-2 text-sm;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-gray-900 to-gray-800;
+  }
+  
+  .card {
+    @apply bg-gradient-to-br from-gray-800 to-gray-700 border-amber-700;
+  }
+  
+  .card:hover {
+    @apply border-amber-600;
+  }
+}
+
+/* Neon Glow Effects */
+.neon-glow {
+  box-shadow: 0 0 10px rgba(180, 83, 9, 0.5), 0 0 20px rgba(234, 88, 12, 0.3);
+}
+
+.neon-glow:hover {
+  box-shadow: 0 0 20px rgba(180, 83, 9, 0.8), 0 0 40px rgba(234, 88, 12, 0.5);
+}
+
+/* Elite Badge */
+.elite-badge {
+  @apply inline-block px-3 py-1 rounded-full font-black text-xs;
+  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
+  color: #78350f;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4), inset 0 1px 0 rgba(255,255,255,0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Hero Section */
+.hero-section {
+  @apply relative overflow-hidden rounded-3xl p-12;
+  background: linear-gradient(135deg, rgba(180, 83, 9, 0.15) 0%, rgba(234, 88, 12, 0.15) 100%);
+  border: 2px solid rgba(180, 83, 9, 0.3);
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: heroGlow 4s ease-in-out infinite;
+}
+
+@keyframes heroGlow {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(10px, 10px); }
+}
+
+/* Particle Effect */
+.particle {
+  position: fixed;
+  pointer-events: none;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Icon Glow */
+.icon-glow {
+  filter: drop-shadow(0 0 8px rgba(180, 83, 9, 0.6));
+}
+
+.icon-glow:hover {
+  filter: drop-shadow(0 0 16px rgba(234, 88, 12, 0.8)) brightness(1.2);
+}
+
+/* Sword Animation */
+@keyframes swordSlash {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(5deg) scale(1.1); }
+}
+
+.sword-animate {
+  animation: swordSlash 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Battle Ready Class */
+.battle-ready {
+  @apply border-2 border-red-500 bg-gradient-to-r from-red-50 to-orange-50;
+  animation: battlePulse 1s ease-in-out infinite;
+}
+
+@keyframes battlePulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(220, 38, 38, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.6); }
+}
+
+/* Victory Class */
+.victory {
+  @apply border-2 border-green-500 bg-gradient-to-r from-green-50 to-emerald-50;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+}
+
+/* Defeat Class */
+.defeat {
+  @apply border-2 border-blue-500 bg-gradient-to-r from-blue-50 to-cyan-50;
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.5);
+}
+
+/* Hover Lift Effect */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Pulse Animation */
+@keyframes epicPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.epic-pulse {
+  animation: epicPulse 2s ease-in-out infinite;
+}
+
+/* Title Shadow Effect */
+.title-shadow {
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    4px 4px 8px rgba(180, 83, 9, 0.2),
+    6px 6px 12px rgba(234, 88, 12, 0.1);
+}
+
+/* Gradient Border */
+.gradient-border {
+  position: relative;
+  background: white;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  background-image: 
+    linear-gradient(white, white),
+    linear-gradient(135deg, #b45309, #ea580c, #f59e0b);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
