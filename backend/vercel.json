@@ -1,0 +1,14 @@
+{
+  "buildCommand": "pip install -r requirements.txt",
+  "outputDirectory": ".",
+  "functions": {
+    "app/main.py": {
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  },
+  "env": {
+    "COC_API_TOKEN": "@coc_api_token",
+    "CLAN_TAG": "@clan_tag"
+  }
+}

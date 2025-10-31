@@ -1,0 +1,13 @@
+backend/
+*.db
+*.sqlite
+.env
+.env.local
+__pycache__/
+node_modules/
+.git/
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+*.log
