@@ -1,13 +1,10 @@
 {
   "version": 2,
-  "buildCommand": "cd frontend && npm install && npm run build",
+  "buildCommand": "npm run build",
   "outputDirectory": "frontend/dist",
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "frontend/dist/index.html"
-    }
-  ],
+  "installCommand": "npm ci",
+  "framework": null,
+  "regions": ["iad1"],
   "env": {
     "VITE_API_URL": "@vite_api_url"
   }
